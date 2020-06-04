@@ -18,8 +18,5 @@ public:
             sum += peak - val;
         }
         return sum;
-    }
-
-
-       
+    }   
 };
