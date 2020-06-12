@@ -17,7 +17,7 @@ public:
                if(longestsubarray<i-mymap[sum])
                  longestsubarray=i-mymap[sum];
             }
-            
+      
             else
                 mymap[sum]=i;
         } 
