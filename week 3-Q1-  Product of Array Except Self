@@ -22,7 +22,7 @@ public:
             product *= nums[i];
         }
         output[0] = product;
-        
+      
         return output;
     }
 }
