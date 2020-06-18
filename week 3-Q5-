@@ -1,0 +1,15 @@
+class Solution {
+public:
+   	int search(vector<int>& A, int x) {
+		const int N=A.size();
+		if(!N) return -1;
+		int p=A[0], l=0, r=N-1;
+		while(l<r) {
+			int m=l+r>>1, n=A[m];
+			if(n==x) return m;
+			if((n<x)^(n<p)^(x<p)) l=m+1;
+			else r=m;
+		}
+		return A[r] == x ? r : -1;
+	}
+};
