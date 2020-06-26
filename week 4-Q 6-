@@ -1,1 +1,17 @@
-
+class Solution {
+public:
+  int maximalSquare(vector<vector<char>>& matrix) {
+        if(matrix.empty()) return 0;
+        
+        int maxSquare = 0, n = matrix.size(), m = matrix[0].size();
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<m; j++) {
+                matrix[i][j] -= '0'; // too bad matrix isn't int-based
+                if(matrix[i][j] && i>0 && j>0)
+                    matrix[i][j] += min(matrix[i-1][j-1], min(matrix[i][j-1], matrix[i-1][j]));
+                maxSquare = max(maxSquare, (int) matrix[i][j]);
+            }
+        }
+        return maxSquare*maxSquare;
+    }
+};
