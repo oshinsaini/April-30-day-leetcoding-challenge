@@ -1,1 +1,37 @@
 
+class Solution { 
+public:
+    int MAX(int a,int b){
+        if(a>b){
+            return a;
+        }
+        else
+            return b;
+    }
+   int path(TreeNode* root,int sum,int *max){
+        if(root==NULL){
+            return 0;
+        }
+        int l = path(root->left,sum,max);
+        int r = path(root->right,sum,max);
+        sum = l + r + root->val;//visualize every node as a path so we have check for every node
+        if(sum>*max){ // 
+            *max = sum;
+        }
+        int val = MAX(root->val+l,root->val+r);
+        if(val>=0){  //only return value if it is greater than 0 otherwise it will decrease the overall sum
+            return val;
+        }
+       else
+           return 0;
+    }
+    int maxPathSum(TreeNode* root) {
+        if(root->left==NULL && root->right==NULL){
+            return root->val;
+        }
+        int sum = INT_MIN;
+        int max = INT_MIN;;
+        path(root,sum,&max);
+        return max; 
+    }
+};
